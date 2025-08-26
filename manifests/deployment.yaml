@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backstage-demo
+  labels:
+    app: backstage-demo
+    backstage.io/kubernetes-id: backstage-demo
+  annotations:
+    # Optional ArgoCD annotation if you want Backstage ArgoCD plugin to show this
+    argocd/app-name: backstage-demo
+    argocd/app-namespace: argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage-demo
+  template:
+    metadata:
+      labels:
+        app: backstage-demo
+        backstage.io/kubernetes-id: backstage-demo
+    spec:
+      containers:
+        - name: backstage-demo
+          image: arunvel1988/backstage-demo:latest  # will be replaced by GitHub Actions
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "1000m"
+              memory: "512Mi"
