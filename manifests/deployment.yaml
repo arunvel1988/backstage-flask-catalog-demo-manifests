@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: backstage-demo
-          image: arunvel1988/backstage-demo:main-ca680b8
+          image: arunvel1988/backstage-demo:main-386efc7
           ports:
             - containerPort: 5000
           resources:
